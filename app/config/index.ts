@@ -35,10 +35,7 @@ interface Config {
   logging: boolean;
 }
 
-// console.log(process.env, "process.env.NODE_ENV ");
-
 export const config: Config = {
-  // 764329f8d0f149fe920367322383ce5e
   environment: "production",
   // environment: (process.env.NODE_ENV as any) || "development",
   baseUrl: process.env.API_URL || "http://localhost:4000",
