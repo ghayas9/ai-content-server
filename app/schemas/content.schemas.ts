@@ -77,7 +77,7 @@ export const generateContent = z.object({
  */
 export const updateContent = z.object({
   params: z.object({
-    id: z.string().uuid("Invalid content ID format"),
+    id: z.string(),
   }),
   body: z.object({
     title: z
@@ -141,7 +141,7 @@ export const updateContent = z.object({
  */
 export const getContentById = z.object({
   params: z.object({
-    id: z.string().uuid("Invalid content ID format"),
+    id: z.string(),
   }),
 });
 
@@ -203,6 +203,6 @@ export const getAllContent = z.object({
  */
 export const deleteContent = z.object({
   params: z.object({
-    id: z.string().uuid("Invalid content ID format"),
+    id: z.string(),
   }),
 });
