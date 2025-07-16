@@ -54,6 +54,7 @@ export const Generate = async ({
         prompt,
         url: url,
         thumbnailUrl: url,
+        status: "completed",
       },
       { transaction },
     );
