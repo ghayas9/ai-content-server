@@ -26,8 +26,8 @@ jobs:
         run: npm install --force
         # Using --force instead of npm ci to resolve dependency conflicts
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
         # Assuming you have a build script in package.json
         # This usually compiles TypeScript to JavaScript
 
