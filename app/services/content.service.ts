@@ -236,6 +236,7 @@ export const getAll = async ({
       },
     };
   } catch (error) {
+    console.log(error, "test");
     if (error instanceof AppError) {
       throw error;
     }
@@ -281,15 +282,10 @@ export const updateOne = async (
     }
 
     // Update the content
-    const [affectedRows] = await Content.update(updateData, {
+    await existingContent.update(updateData, {
       where: { id, userId },
       transaction,
     });
-
-    if (affectedRows === 0) {
-      await transaction.rollback();
-      throw new AppError("Content update failed", 400);
-    }
 
     // Fetch the updated content
     const updatedContent = await Content.findOne({

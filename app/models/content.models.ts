@@ -83,7 +83,7 @@ export class Content
   // Instance methods
   public generateSlug(): string {
     return this.title
-      .toLowerCase()
+      ?.toLowerCase()
       .replace(/[^a-z0-9 -]/g, "")
       .replace(/\s+/g, "-")
       .replace(/-+/g, "-")
