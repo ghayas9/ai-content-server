@@ -1,0 +1,17 @@
+{
+  "watch": ["app/**/*.ts"],
+  "ignore": [".git", "node_modules/**/node_modules", "dist"],
+  "exec": "ts-node app/server.ts",
+  "ext": "ts,json",
+  "restartable": "rs",
+  "stdin": false,
+  "delay": "1000",
+  "watchConfig": {
+    "followSymlinks": false,
+    "usePolling": false
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "legacyWatch": false
+}
