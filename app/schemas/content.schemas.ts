@@ -152,7 +152,9 @@ export const getAllContent = z.object({
   query: z.object({
     type: z.enum(["article", "video", "image", "audio", "document"]).optional(),
     contentType: z.enum(["text", "html", "markdown", "json"]).optional(),
-    status: z.enum(["pending", "published", "draft", "archived"]).optional(),
+    status: z
+      .enum(["pending", "published", "draft", "archived", "completed"])
+      .optional(),
     isPrivate: z
       .string()
       .refine((val) => val === "true" || val === "false", {
