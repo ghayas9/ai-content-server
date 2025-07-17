@@ -41,7 +41,7 @@ export const Generate = async ({
   contentType = "image",
   userId,
   prompt,
-  isPrivate = true,
+  isPrivate = false,
 }: GenerateContentPayload) => {
   const transaction = await sequelize.transaction();
 

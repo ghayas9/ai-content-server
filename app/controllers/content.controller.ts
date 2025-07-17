@@ -22,12 +22,12 @@ export const getOne = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const getAll = catchAsync(async (req: Request, res: Response) => {
-  const userId = req.payload?.id;
+  // const userId = req.payload?.id;
   const { page, pageSize, isPrivate, ...otherQuery } = req.query;
 
   const data = await service.getAll({
     ...otherQuery,
-    userId,
+    // userId,
     page: page ? parseInt(page as string) : undefined,
     pageSize: pageSize ? parseInt(pageSize as string) : undefined,
     isPrivate:
