@@ -57,7 +57,7 @@ export const Generate = async ({
         url: url,
         thumbnailUrl: url,
         status: "completed",
-        isPrivate,
+        isPrivate: !!isPrivate,
       },
       { transaction },
     );
@@ -69,6 +69,7 @@ export const Generate = async ({
       data: content,
     };
   } catch (error) {
+    console.log(error);
     if (error instanceof AppError) {
       throw error;
     }

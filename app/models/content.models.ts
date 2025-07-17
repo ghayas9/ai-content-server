@@ -295,7 +295,12 @@ Content.init(
           // Ensure slug is unique
           let counter = 1;
           let originalSlug = content.slug;
-          while (await Content.findOne({ where: { slug: content.slug } })) {
+          while (
+            await Content.findOne({
+              where: { slug: content.slug },
+              paranoid: false,
+            })
+          ) {
             content.slug = `${originalSlug}-${counter}`;
             counter++;
           }
