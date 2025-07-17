@@ -57,10 +57,6 @@ const Auth = (requiredRole: string | null = null, auth: boolean = true) => {
 
 export default Auth;
 
-// export const isAuthenticated = Auth();
-// export const isAdmin = Auth("admin");
-// export const isAuthOrUnAuth = Auth(null, false);
-
-export const isAuthenticated = Auth(null, false);
-export const isAdmin = Auth(null, false);
+export const isAuthenticated = Auth();
+export const isAdmin = Auth("admin");
 export const isAuthOrUnAuth = Auth(null, false);
