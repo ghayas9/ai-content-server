@@ -85,7 +85,7 @@ export const register = async ({
 
     if (existingUserByEmail) {
       await transaction.rollback();
-      throw new AppError("EMAIL_EXISTS", 400);
+      throw new AppError("EMAIL EXISTS", 400);
     }
 
     // Create user
@@ -110,27 +110,19 @@ export const register = async ({
     // Return user details (excluding sensitive information)
     return {
       message: "User registered successfully",
-      data: {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        referralCode: user.referralCode,
-        credits: user.credits,
-        emailVerified: user.emailVerified,
-      },
+      data: user,
     };
   } catch (error) {
-    // Rollback transaction if it hasn't been committed
-    await transaction.rollback();
-
     // Rethrow known errors or wrap unknown errors
     if (error instanceof AppError) {
       throw error;
     }
 
+    // Rollback transaction if it hasn't been committed
+    await transaction.rollback();
+
     console.error("Registration error:", error);
-    throw new AppError("REGISTRATION_ERROR", 500);
+    throw new AppError("REGISTRATION ERROR", 500);
   }
 };
 
