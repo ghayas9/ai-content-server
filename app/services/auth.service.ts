@@ -7,6 +7,7 @@ import { Op } from "sequelize";
 import config from "../config";
 import User from "../models/user.models";
 import OTP from "../models/otp.models";
+import { sendMail } from "../utils/mail";
 
 const OTP_EXPIRY_MINUTES = 10;
 const JWT_EXPIRY_MINUTES = 15;
@@ -380,6 +381,12 @@ export const forgotPassword = async (email: string): Promise<any> => {
       expiresInMinutes: OTP_EXPIRY_MINUTES,
       metadata: { email: user.email },
       length: 6,
+    });
+
+    sendMail({
+      to: user?.email,
+      subject: "Forgot Password",
+      html: `<h1>${otpRecord?.code}</h1>`,
     });
 
     console.log(`Password reset OTP for ${email}: ${otpRecord.code}`);
