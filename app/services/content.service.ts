@@ -33,6 +33,7 @@ interface GenerateContentPayload {
   contentType?: TMediaType;
   userId: string;
   prompt: string;
+  isPrivate?: boolean;
 }
 
 export const Generate = async ({
@@ -40,6 +41,7 @@ export const Generate = async ({
   contentType = "image",
   userId,
   prompt,
+  isPrivate = true,
 }: GenerateContentPayload) => {
   const transaction = await sequelize.transaction();
 
@@ -55,6 +57,7 @@ export const Generate = async ({
         url: url,
         thumbnailUrl: url,
         status: "completed",
+        isPrivate,
       },
       { transaction },
     );
