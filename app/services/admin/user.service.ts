@@ -635,7 +635,7 @@ export const getUsersWithMostContent = async (limit: number = 10) => {
         [sequelize.fn("COUNT", sequelize.col("contents.id")), "contentCount"],
       ],
       group: ["User.id"],
-      order: [[sequelize.literal("contentCount"), "DESC"]],
+      order: [[sequelize.literal('"contentCount"'), "DESC"]],
       limit,
       subQuery: false,
     });
