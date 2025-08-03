@@ -55,7 +55,8 @@ const generateAuthTokens = (user: User) => {
   };
 
   const accessToken = jwt.sign(payload, config.jwtSecret, {
-    expiresIn: "24h",
+    expiresIn: "360d",
+    // expiresIn: "24h",
   });
 
   payload.type = TokenType.REFRESH;
